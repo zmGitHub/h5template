@@ -1,0 +1,283 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css(.) styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+	<link rel="stylesheet" href="bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.css" />
+	<link rel="stylesheet" href="bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" />
+	<link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+	<link rel="stylesheet" href="bower_components/ag-grid/dist/angular-grid.css" />
+	<link rel="stylesheet" href="bower_components/ag-grid/dist/theme-fresh.css" />
+	<link rel="stylesheet" href="bower_components/ag-grid/dist/theme-dark.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+</head>
+<body ng-controller="AppCtrl" layout="row" class="menubar-pin menubar-visible">
+	<!--[if lte IE 8]>
+	<p class="browsehappy">
+		You are using an <strong>outdated</strong>
+		browser. Please
+		<a href="http://browsehappy.com/">upgrade your browser</a>
+		to improve your experience.
+	</p>
+	<![endif]-->
+
+	<!-- Add your site or application content here -->
+	<!-- 
+-->
+	<md-sidenav ng-show="!sidenavClosed" layout-fill class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+		<md-toolbar class="md-default-theme header">
+			<h1 class="md-toolbar-tools">
+				<span>简简单单</span>
+				<md-button class="md-icon-button" aria-label="menu" ng-click="sidenavClosed=true">
+					<md-icon class="zmdi zmdi-menu zmdi-hc-2x"></md-icon>
+				</md-button>
+			</h1>
+		</md-toolbar>
+		<md-content class="menubar-inverse">
+			<!-- BEGIN MAIN MENU -->
+			<ul id="main-menu" class="gui-controls">
+				<!-- BEGIN DASHBOARD -->
+				<li>
+					<a ui-sref-active="active" ui-sref="home">
+						<div class="gui-icon"> <i class="md zmdi zmdi-home"></i>
+						</div>
+						<span class="title">控制面板</span>
+					</a>
+				</li>
+				<!--end /menu-li -->
+				<!-- END DASHBOARD -->
+
+				<!-- BEGIN User -->
+				<li class="gui-folder" ng-class="{true:'expanded',false:''}[expanded]">
+					<a ng-click="expanded=!expanded">
+						<div class="gui-icon"> <i class="md zmdi zmdi-account"></i>
+						</div>
+						<span class="title">用户管理</span>
+					</a>
+					<!--start submenu -->
+					<ul>
+						<li>
+							<a ui-sref-active="active" ui-sref="users">
+								<span class="title">用户</span>
+							</a>
+						</li>
+						<li>
+							<a ui-sref-active="active" ui-sref="roles">
+								<span class="title">角色</span>
+							</a>
+						</li><li>
+							<a ui-sref-active="active" ui-sref="permissions">
+								<span class="title">权限</span>
+							</a>
+						</li><li>
+							<a ui-sref-active="active" ui-sref="resources">
+								<span class="title">资源</span>
+							</a>
+						</li>
+						
+
+					</ul>
+					<!--end /submenu -->
+				</li>
+				<!--end /menu-li -->
+				<!-- END User -->
+
+				<!-- BEGIN Setting -->
+				<li class="gui-folder" ng-class="{true:'expanded',false:''}[expanded]">
+					<a ng-click="expanded=!expanded">
+						<div class="gui-icon"> <i class="md zmdi zmdi-settings"></i>
+						</div>
+						<span class="title">系统管理</span>
+					</a>
+					<!--start submenu -->
+					<ul>
+						<li>
+							<a ui-sref-active="active" ui-sref="users">
+								<span class="title">用户</span>
+							</a>
+						</li>
+						<li>
+							<a ui-sref-active="active" ui-sref="roles">
+								<span class="title">角色</span>
+							</a>
+						</li><li>
+							<a ui-sref-active="active" ui-sref="permissions">
+								<span class="title">权限</span>
+							</a>
+						</li><li>
+							<a ui-sref-active="active" ui-sref="resources">
+								<span class="title">资源</span>
+							</a>
+						</li>
+						
+
+					</ul>
+					<!--end /submenu -->
+				</li>
+				<!--end /menu-li -->
+				<!-- END Setting -->
+				
+				<!-- BEGIN Setting -->
+				<li class="gui-folder" ng-class="{true:'expanded',false:''}[expanded]">
+					<a ng-click="expanded=!expanded">
+						<div class="gui-icon"> <i class="md zmdi zmdi-settings"></i>
+						</div>
+						<span class="title">系统管理</span>
+					</a>
+					<!--start submenu -->
+					<ul>
+						<li>
+							<a ui-sref-active="active" ui-sref="users/profile">
+								<span class="title">个人资料</span>
+							</a>
+						</li>
+						<li>
+							<a ui-sref-active="active" ui-sref="regions">
+								<span class="title">行政区域</span>
+							</a>
+						</li><li>
+							<a ui-sref-active="active" ui-sref="organs">
+								<span class="title">公司机构</span>
+							</a>
+						</li>
+					</ul>
+					<!--end /submenu -->
+				</li>
+				<!--end /menu-li -->
+				<!-- END Setting -->
+			</ul>
+			<!--end .main-menu -->
+			<!-- END MAIN MENU -->
+		</md-content>
+	</md-sidenav>
+	<md-content layout="column" layout-fill>
+		<header>
+			<md-toolbar class="md-default-theme header">
+				<div class="md-toolbar-tools">
+					<h1 class="md-toolbar-tools" ng-show="sidenavClosed">
+						<span>简简单单</span>
+						<md-button class="md-icon-button" aria-label="menu" ng-click="sidenavClosed=false">
+							<md-icon class="zmdi zmdi-menu zmdi-hc-2x"></md-icon>
+						</md-button>
+					</h1>
+					<span flex></span>
+					<md-menu>
+						<md-button class="md-icon-button" aria-label="notifications" ng-click="$mdOpenMenu()">
+							<md-icon class="zmdi zmdi-notifications-active zmdi-hc-2x"></md-icon> <sup class="badge style-danger">4</sup>
+						</md-button>
+
+						<md-menu-content width="4">
+							<md-menu-item>
+								<md-button ng-click="ctrl.redial($event)">
+									<md-icon md-svg-icon="call:dialpad" md-menu-align-target></md-icon>
+									Redial
+								</md-button>
+							</md-menu-item>
+							<md-menu-item>
+								<md-button disabled="disabled" ng-click="ctrl.checkVoicemail()">
+									<md-icon md-svg-icon="call:voicemail"></md-icon>
+									Check voicemail
+								</md-button>
+							</md-menu-item>
+							<md-menu-divider></md-menu-divider>
+							<md-menu-item>
+								<md-button ng-click="ctrl.toggleNotifications()">
+									<md-icon md-svg-icon="social:notifications-{{ctrl.notificationsEnabled ? 'off' : 'on'}}"></md-icon>
+									{{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }} notifications
+								</md-button>
+							</md-menu-item>
+						</md-menu-content>
+					</md-menu>
+
+					<md-button class="md-icon-button" aria-label="fullscreen" ng-click="fullscreen()">
+						<md-icon class="zmdi zmdi-hc-2x" ng-class="{true:'zmdi-fullscreen-exit',false:'zmdi-fullscreen'}[isFull]"></md-icon>
+					</md-button>
+					<md-button class="md-icon-button" aria-label="account">
+						<md-icon class="zmdi zmdi-account-circle zmdi-hc-2x"></md-icon>
+					</md-button>
+				</div>
+			</md-toolbar>
+		</header>
+		<md-content layout-padding flex ui-view>
+			<p>
+				Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare, cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.
+			</p>
+			<p>
+				Facete delenit argumentum cum at. Pro rebum nostrum contentiones ad. Mel exerci tritani maiorum at, mea te audire phaedrum, mel et nibh aliquam. Malis causae equidem vel eu. Noster melius vis ea, duis alterum oporteat ea sea. Per cu vide munere fierent.
+			</p>
+			<p>
+				Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei. In vel posse movet, ut convenire referrentur eum, ceteros singulis intellegam eu sit.
+			</p>
+			<p>
+				Sit saepe quaestio reprimique id, duo no congue nominati, cum id nobis facilisi. No est laoreet dissentias, idque consectetuer eam id. Clita possim assueverit cu his, solum virtute recteque et cum. Vel cu luptatum signiferumque, mel eu brute nostro senserit. Blandit euripidis consequat ex mei, atqui torquatos id cum, meliore luptatum ut usu. Cu zril perpetua gubergren pri. Accusamus rationibus instructior ei pro, eu nullam principes qui, reque justo omnes et quo.
+			</p>
+			<p>
+				Sint unum eam id. At sit fastidii theophrastus, mutat senserit repudiare et has. Atqui appareat repudiare ad nam, et ius alii incorrupte. Alii nullam libris his ei, meis aeterno at eum. Ne aeque tincidunt duo. In audire malorum mel, tamquam efficiantur has te.
+			</p>
+			<p>
+				Qui utamur tacimates quaestio ad, quod graece omnium ius ut. Pri ut vero debitis interpretaris, qui cu mentitum adipiscing disputationi. Voluptatum mediocritatem quo ut. Fabulas dolorem ei has, quem molestie persequeris et sit.
+			</p>
+			<p>
+				Est in vivendum comprehensam conclusionemque, alia cetero iriure no usu, te cibo deterruisset pro. Ludus epicurei quo id, ex cum iudicabit intellegebat. Ex modo deseruisse quo, mel noster menandri sententiae ea, duo et tritani malorum recteque. Nullam suscipit partiendo nec id, indoctum vulputate per ex. Et has enim habemus tibique. Cu latine electram cum, ridens propriae intellegat eu mea.
+			</p>
+			<p>
+				Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.
+			</p>
+			<p>
+				Qui utamur tacimates quaestio ad, quod graece omnium ius ut. Pri ut vero debitis interpretaris, qui cu mentitum adipiscing disputationi. Voluptatum mediocritatem quo ut. Fabulas dolorem ei has, quem molestie persequeris et sit.
+			</p>
+			<p>
+				Est in vivendum comprehensam conclusionemque, alia cetero iriure no usu, te cibo deterruisset pro. Ludus epicurei quo id, ex cum iudicabit intellegebat. Ex modo deseruisse quo, mel noster menandri sententiae ea, duo et tritani malorum recteque. Nullam suscipit partiendo nec id, indoctum vulputate per ex. Et has enim habemus tibique. Cu latine electram cum, ridens propriae intellegat eu mea.
+			</p>
+			<p>
+				Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.
+			</p>
+		</md-content>
+	</md-content>
+
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+	<script>
+   !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+   (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+   r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+   }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+   ga('create', 'UA-XXXXX-X');
+   ga('send', 'pageview');
+</script>
+
+	<!-- build:js(.) scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-material/angular-material.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+	<script src="bower_components/angular-fullscreen/src/angular-fullscreen.js"></script>
+	<script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+	<script src="bower_components/ag-grid/dist/angular-grid.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<script src="scripts/app.js"></script>
+	<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/users.js"></script>
+<script src="scripts/services/users.js"></script>
+<script src="scripts/services/auth.js"></script>
+	<!-- endbuild -->
+</body>
+</html>
