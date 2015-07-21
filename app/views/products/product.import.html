@@ -1,0 +1,43 @@
+<div flex layout="row">
+	<div flex="30" layout="column">
+	<md-content layout-padding layout="column" flex style="position:relative">
+		<md-whiteframe class="md-whiteframe-z1" layout="column" flex style="position:relative">
+			<md-input-container md-no-float class="search">
+				<input ng-model="brandOptions.quickFilterText" placeholder="搜索"></md-input-container>
+			<div style="position:relative"flex>
+				<div ag-grid="brandOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+			</div>
+		</md-whiteframe>
+	</md-content>
+</div>
+<div flex="30" layout="column">
+	<md-content layout-padding layout="column" flex>
+		<md-whiteframe class="md-whiteframe-z1" layout="column" flex style="position:relative">
+			<div layout="row">
+
+				<md-input-container md-no-float class="search" flex>
+					<input ng-model="sampleOptions.quickFilterText" placeholder="搜索"></md-input-container>
+
+			</div>
+			<div style="position:relative" flex>
+				<div ag-grid="sampleOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+			</div>
+		</md-whiteframe>
+	</md-content>
+</div>
+
+<div flex="35" ng-show="brandOptions.selectedRows.length>0 && sampleOptions.selectedRows.length>0">
+	<form flex layout="column" layout-align="center" class="dropzone" ngf-drop ngf-select ngf-drag-over-class="dragover" ng-model="files" ngf-multiple="false" ngf-accept="'*xlsx'">
+		<div class="message"style="height:150px;">
+			<h3>把文件拖过来或者点击上传.</h3> <em>注意：只支持格式为 <strong>.xlsx</strong>
+				的excel文件,且忽略第一行(即表头).</em> 
+			<md-progress-linear ng-show="progressPer>
+				0" class="md-accent" md-mode="buffer" value="{{progressPer}}" md-buffer-value="{{progressPer+10}}">
+			</md-progress-linear>
+			<div style="width:150px;margin:0 auto" ng-show="status!=undefined"> <strong>{{status}}</strong>
+				<md-progress-circular class="md-hue-2" md-mode="indeterminate"></md-progress-circular>
+			</div>
+		</div>
+	</form>
+</div>
+</div>

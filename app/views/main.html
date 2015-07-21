@@ -1,1 +1,169 @@
-main
+<md-sidenav md-component-id="left" class="menubar-inverse menubar-pin menubar-visible" md-is-locked-open="$mdMedia('gt-md')">
+	<nav class="md-sidenav-left menubar-inverse">
+		<ul class="gui-controls" ng-include="'nav.html'"></ul>
+		<!-- <ul class="gui-controls">
+			
+			<li>
+				<a ui-sref-active="active" ui-sref=".home">
+					<div class="gui-icon"> <i class="md zmdi zmdi-home"></i>
+					</div>
+					<span class="title">控制面板</span>
+				</a>
+			</li>
+			<li class="gui-folder" ng-class="{true:'expanded',false:''}[expanded]">
+				<a ng-click="expanded=!expanded">
+					<div class="gui-icon">
+						<i class="md zmdi zmdi-account"></i>
+					</div>
+					<span class="title">用户管理</span>
+				</a>
+				<ul>
+					<li>
+						<a ui-sref-active="active" ui-sref=".users">
+							<span class="title">用户</span>
+						</a>
+					</li>
+					<li>
+						<a ui-sref-active="active" ui-sref=".roles">
+							<span class="title">角色</span>
+						</a>
+					</li>
+					<li>
+						<a ui-sref-active="active" ui-sref=".permissions">
+							<span class="title">权限</span>
+						</a>
+					</li>
+					<li>
+						<a ui-sref-active="active" ui-sref=".resources">
+							<span class="title">资源</span>
+						</a>
+					</li>
+
+				</ul>
+			</li>
+
+			<li class="gui-folder" ng-class="{true:'expanded',false:''}[expanded]">
+				<a ng-click="expanded=!expanded">
+					<div class="gui-icon">
+						<i class="md zmdi zmdi-settings"></i>
+					</div>
+					<span class="title">系统管理</span>
+				</a>
+				<ul>
+					<li>
+						<a ui-sref-active="active" ui-sref=".profile">
+							<span class="title">个人资料</span>
+						</a>
+					</li>
+					<li>
+						<a ui-sref-active="active" ui-sref=".regions">
+							<span class="title">行政区域</span>
+						</a>
+					</li>
+
+				</ul>
+			</li>
+			<li class="gui-folder" ng-class="{true:'expanded',false:''}[expanded]">
+				<a ng-click="expanded=!expanded">
+					<div class="gui-icon">
+						<i class="md zmdi zmdi-settings"></i>
+					</div>
+					<span class="title">平台管理</span>
+				</a>
+				<ul>
+					<li>
+						<a ui-sref-active="active" ui-sref=".organs">
+							<span class="title">公司机构</span>
+						</a>
+					</li>
+					<li>
+						<a ui-sref-active="active" ui-sref=".categories">
+							<span class="title">产品标准分类</span>
+						</a>
+					</li>
+
+				</ul>
+			</li>
+			<li class="gui-folder" ng-class="{true:'expanded',false:''}[expanded]">
+				<a ng-click="expanded=!expanded">
+					<div class="gui-icon">
+						<i class="md zmdi zmdi-settings"></i>
+					</div>
+					<span class="title">产品管理</span>
+				</a>
+				<ul>
+					<li>
+						<a ui-sref-active="active" ui-sref=".samples">
+							<span class="title">样本</span>
+						</a>
+					</li>
+					<li>
+						<a ui-sref-active="active" ui-sref=".brands">
+							<span class="title">品牌</span>
+						</a>
+					</li>
+					<li>
+						<a ui-sref-active="active" ui-sref=".products">
+							<span class="title">产品编辑</span>
+						</a>
+					</li>
+					<li>
+						<a ui-sref-active="active" ui-sref=".import">
+							<span class="title">产品导入</span>
+						</a>
+					</li>
+					<li>
+						<a ui-sref-active="active" ui-sref=".agent">
+							<span class="title">产品代理</span>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="gui-folder" ng-class="{true:'expanded',false:''}[expanded]">
+				<a ng-click="expanded=!expanded">
+					<div class="gui-icon">
+						<i class="md zmdi zmdi-settings"></i>
+					</div>
+					<span class="title">项目管理</span>
+				</a>
+				<ul>
+					<li>
+						<a ui-sref-active="active" ui-sref=".projects">
+							<span class="title">新建项目</span>
+						</a>
+					</li>
+
+				</ul>
+			</li>
+		</ul> -->
+	</nav>
+</md-sidenav>
+<md-content layout="column" layout-fill ui-view></md-content>
+
+	<!-- <li ng-repeat="resource in resources" class="gui-folder" ng-class="{true:'expanded',false:''}[resource.expanded]">
+		<a  ng-if="resource.children.length==0" ui-sref-active="active" ui-sref=".home">
+			<div class="gui-icon"> <i class="md zmdi zmdi-home"></i>
+			</div>
+			<span class="title">{{resource.name}}</span>
+		</a>
+		<a ng-if="resource.children.length" ng-click="resource.expanded=!expanded"></a>
+		<ul ng-if="resource.children.length" ng-include="'nav.html'"  ng-init="resources=resource.children"></ul>
+	</li> -->
+<script type="text/ng-template" id="nav.html">
+
+<li ng-repeat="resource in resources" ng-class="{'expanded':resource.expanded,'gui-folder':resource.children.length>
+	0}">
+	<a ng-click="resource.expanded=!resource.expanded" ng-if="resource.children.length>0">
+		<div class="gui-icon" ng-if="resource.depth=1"> <i class="md material-icons">{{resource.icon}}</i>
+		</div>
+		<span class="title">{{resource.name}}</span>
+	</a>
+	<a ui-sref-active="active" ui-sref="{{resource.url}}" ng-if="resource.children.length==0">
+		<div class="gui-icon" ng-if="resource.depth=1"> <i class="md md-assessment"></i>
+		</div>
+		<span class="title">{{resource.name}}</span>
+	</a>
+	<ul ng-if="resource.children.length>0" ng-include="'nav.html'" ng-init="resources=resource.children"></ul>
+</li>
+</script>
+

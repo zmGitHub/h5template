@@ -1,0 +1,74 @@
+	 <div layout="row" layout-wrap>
+	 	<div flex="60">
+	 		<md-content layout-padding>
+	 			<md-whiteframe class="md-whiteframe-z1" layout="column">
+	 				<div layout="row">
+	 					<md-input-container class="search" md-no-float flex>
+	 						<input ng-model="organOptions.quickFilterText" placeholder="搜索"></md-input-container>
+	 					<md-button class="md-icon-button" ng-disabled="organOptions.selectedRows.length==0 && organOptions.rowData.length>
+	 						0" ng-click="add()" aria-label="plus">
+	 						<md-icon> <i class="material-icons">add</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button ng-disabled="organOptions.selectedRows.length==0" ng-click="edit()" class="md-icon-button" aria-label="edit">
+	 						<md-icon> <i class="material-icons">edit</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button ng-disabled="organOptions.selectedRows.length==0" ng-click="delete()" class="md-icon-button" aria-label="delete">
+	 						<md-icon>
+	 							<i class="material-icons">delete</i>
+	 						</md-icon>
+	 					</md-button>
+	 				</div>
+	 				<div ag-grid="organOptions" class="ag-fresh grid-height"></div>
+	 			</md-whiteframe>
+	 		</md-content>
+	 	</div>
+	 	<div flex="40">
+	 		<md-content layout-padding>
+	 			<md-whiteframe class="md-whiteframe-z1" layout="column">
+	 				<md-tabs md-selected="selectedIndex" md-center-tabs="false" md-autoselect>
+	 					<md-tab>
+	 						<md-tab-label>{{formTitle}}公司</md-tab-label>
+	 						<md-tab-body layout-padding>
+	 								<form name="organForm" ng-submit="submit()">
+	 									<fieldset ng-disabled="organOptions.rowData.length>0 && organ.pId==undefined">
+	 										<md-input-container>
+	 											<label>名称</label>
+	 											<input ng-model="organ.name" type="text" ng-required="true"></md-input-container>
+	 										<md-input-container>
+	 											<md-select ng-disabled="organOptions.rowData.length>
+	 												0 && organ.pId==undefined" name="flag" placeholder="公司类型" ng-model="organ.flag" required>
+	 												<md-option value="4">其他</md-option>
+	 												<md-option value="1">厂商</md-option>
+	 												<md-option value="2">供应商</md-option>
+	 												<md-option value="3">工程商</md-option>
+	 											</md-select>
+	 										</md-input-container>
+	 										<div layout layout="column">
+	 											<md-input-container md-no-float style="width:120px;">
+	 												<md-icon>
+	 													<i class="material-icons">location_on</i>
+	 												</md-icon>
+	 												<input type="text" style="cursor: pointer;" ng-click="selectRegion()" readonly ng-model="organ.contact.address.region.name" placeholder="地区"></md-input-container>
+	 											<md-input-container md-no-float flex>
+	 												<input ng-model="organ.contact.address.address" type="text" placeholder="地址" ></md-input-container>
+	 										</div>
+	 										<md-button class="md-raised" ng-disabled="organForm.$invalid">保存</md-button>
+	 									</fieldset>
+	 								</form>
+	 						</md-tab-body>
+	 					</md-tab>
+	 					<md-tab ng-disabled="organOptions.rowData.length>0 && organ.pId==undefined">
+	 						<md-tab-label>地区</md-tab-label>
+	 						<md-tab-body>
+	 							<md-input-container class="search" md-no-float flex>
+	 								<input ng-model="regionOptions.quickFilterText" placeholder="搜索"></md-input-container>
+	 							<div ag-grid="regionOptions" class="ag-fresh grid-height"></div>
+	 						</md-tab-body>
+	 					</md-tab>
+	 				</md-tabs>
+	 			</md-whiteframe>
+	 		</md-content>
+	 	</div>
+	 </div>

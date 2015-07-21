@@ -1,13 +1,9 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name appApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the appApp
- */
 angular.module('app')
-  .controller('MainCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil, $log) {
-  	
-  })
+	.controller('MainCtrl', function($scope, $http, $mdSidenav, $mdUtil, $log, resources, users) {
+		// var arr = navs(resources,users[0].resources)
+		// $log.log('arr：',arr)
+		$scope.resources = arrayToTree(resources).children
+		// $log.log($scope.resources)
+	})

@@ -1,0 +1,16 @@
+<md-content layout-padding layout="column" flex>
+	<md-whiteframe class="md-whiteframe-z1" layout="column" flex>
+		<div layout="row">
+			<md-input-container class="search" md-no-float flex>
+				<input ng-model="resourceOptions.quickFilterText" placeholder="搜索"></md-input-container>
+			<md-button class="md-icon-button" ng-show="resourceOptions.selectedRows.length>
+				0" ng-click="addResources()" aria-label="add">
+				<md-icon> <i class="material-icons">add</i>
+				</md-icon>
+			</md-button>
+		</div>
+		<div style="position:relative" flex>
+			<div ag-grid="resourceOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+		</div>
+	</md-whiteframe>
+</md-content>

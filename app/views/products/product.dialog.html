@@ -1,0 +1,51 @@
+<md-dialog aria-label="请选择样本和品牌">
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>请选择样本和品牌</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="close()">
+					<md-icon> <i class="material-icons">close</i>
+					</md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div layout="row" style="height:350px">
+				<div flex="50" layout="column">
+					<md-content layout-padding layout="column" flex style="position:relative">
+						<md-whiteframe class="md-whiteframe-z1" layout="column" flex style="position:relative">
+							<md-input-container md-no-float class="search">
+								<input ng-model="brandOptions.quickFilterText" placeholder="搜索"></md-input-container>
+							<div style="position:relative"flex>
+								<div ag-grid="brandOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+							</div>
+						</md-whiteframe>
+					</md-content>
+				</div>
+				<div flex="50" layout="column">
+					<md-content layout-padding layout="column" flex>
+						<md-whiteframe class="md-whiteframe-z1" layout="column" flex style="position:relative">
+							<div layout="row">
+
+								<md-input-container md-no-float class="search" flex>
+									<input ng-model="sampleOptions.quickFilterText" placeholder="搜索"></md-input-container>
+
+								
+							</div>
+							<div style="position:relative" flex>
+								<div ag-grid="sampleOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+							</div>
+						</md-whiteframe>
+					</md-content>
+				</div>
+			</div>
+		</md-dialog-content>
+		<div class="md-actions" layout="row">
+			<md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" hide show-md>More on Wikipedia</md-button>
+			<span flex></span>
+			<md-button ng-click="close()" class="md-primary">取消</md-button>
+			<md-button class="md-raised md-primary" ng-click="agent()" ng-show="brandOptions.selectedRows.length>0 && sampleOptions.selectedRows.length>0">代理</md-button>
+		</div>
+	</form>
+</md-dialog>

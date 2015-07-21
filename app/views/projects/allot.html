@@ -1,0 +1,74 @@
+	 <div layout="row" flex>
+	 	<div flex="60" layout="column">
+	 		<md-content layout-padding layout="column" flex>
+	 			<md-whiteframe class="md-whiteframe-z1" layout="column" flex>
+	 				<div layout="row">
+	 					<md-input-container class="search" md-no-float flex>
+	 						<input ng-model="projectOptions.quickFilterText" placeholder="搜索"></md-input-container>
+	 				</div>
+	 				<div style="position:relative" flex>
+	 					<div ag-grid="projectOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+	 				</div>
+	 			</md-whiteframe>
+	 		</md-content>
+	 	</div>
+	 	<div flex="40" layout="column">
+	 		<md-content layout-padding flex layout="column">
+	 			<md-whiteframe class="md-whiteframe-z1" flex layout="column">
+	 				<md-tabs md-selected="selectedIndex" flex layout="column" md-center-tabs="false">
+	 					<md-tab>
+	 						<md-tab-label>{{formTitle}}项目</md-tab-label>
+	 						<md-tab-body>
+	 							<md-content layout-padding class="autoScroll">
+	 								<form name="projectForm" ng-submit="submit()">
+	 									<fieldset ng-disabled="projectOptions.selectedRows.length==0">
+	 										<md-input-container>
+	 											<label>名称</label>
+	 											<input ng-disabled="true" ng-model="project.name" type="text" ng-required="true"></md-input-container>
+	 										<md-input-container class="md-icon-float">
+	 											<label>项目经理</label>
+	 											<md-icon>
+	 												<i class="material-icons">person</i>
+	 											</md-icon>
+	 											<input ng-disabled="true" ng-model="project.manager.name" ng-click="selectUser('manager')" style="cursor: pointer;" readonly  type="text" ng-required="true"></md-input-container>
+	 										<md-input-container class="md-icon-float">
+	 											<label>审核人</label>
+	 											<md-icon>
+	 												<i class="material-icons">person</i>
+	 											</md-icon>
+	 											<input ng-disabled="true" ng-model="project.auditor.name" ng-click="selectUser('auditor')" style="cursor: pointer;" readonly  type="text"></md-input-container>
+	 										<md-input-container class="md-icon-float">
+	 											<label>参与算量人员</label>
+	 											<md-icon>
+	 												<i class="material-icons">person_add</i>
+	 											</md-icon>
+	 											<input ng-model="drawingUsers" ng-click="selectUser('drawing')" style="cursor: pointer;" readonly  type="text" ng-required="true"></md-input-container>
+	 										<md-input-container class="md-icon-float">
+	 											<label>参与预算人员</label>
+	 											<md-icon>
+	 												<i class="material-icons">person_add</i>
+	 											</md-icon>
+	 											<input ng-model="budgetUsers" ng-click="selectUser('budget')" style="cursor: pointer;" readonly  type="text" ng-required="true"></md-input-container>
+	 										<md-button class="md-raised" ng-disabled="projectForm.$invalid">保存</md-button>
+	 									</fieldset>
+	 								</form>
+	 							</md-content>
+	 						</md-tab-body>
+	 					</md-tab>
+	 					<md-tab ng-disabled="true">
+	 						<md-tab-label>公司用户</md-tab-label>
+	 						<md-tab-body>
+	 							<div layout="column" style="height:100%;width:100%;position:absolute">
+	 								<md-input-container class="search" md-no-float>
+	 									<input ng-model="regionOptions.quickFilterText" placeholder="搜索"></md-input-container>
+	 								<div style="position:relative" flex>
+	 									<div ag-grid="regionOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+	 								</div>
+	 							</div>
+	 						</md-tab-body>
+	 					</md-tab>
+	 				</md-tabs>
+	 			</md-whiteframe>
+	 		</md-content>
+	 	</div>
+	 </div>

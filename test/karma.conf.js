@@ -24,7 +24,6 @@ module.exports = function(config) {
       // bower:js
       'bower_components/angular/angular.js',
       'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-aria/angular-aria.js',
       'bower_components/angular-material/angular-material.js',
@@ -33,6 +32,9 @@ module.exports = function(config) {
       'bower_components/angular-fullscreen/src/angular-fullscreen.js',
       'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
       'bower_components/ag-grid/dist/angular-grid.js',
+      'bower_components/momentjs/moment.js',
+      'bower_components/humanize-duration/humanize-duration.js',
+      'bower_components/angular-timer/dist/angular-timer.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

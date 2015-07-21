@@ -1,0 +1,32 @@
+<div layout layout-fill layout-align="center center">
+	<md-whiteframe class="md-whiteframe-z2" style="width:500px;">
+		<md-content layout-padding>
+			<form name="signupForm" ng-submit="submit()">
+				<fieldset>
+					<md-input-container>
+						<md-icon> <i class="material-icons">email</i>
+						</md-icon>
+						<input type="email" ng-required="true" placeholder="邮箱 (必填)" name="email" ng-model="user.email"></md-input-container>
+					<div layout="row">
+						<md-input-container flex>
+							<md-icon> <i class="material-icons">code</i>
+							</md-icon>
+							<input type="text" ng-required="true" placeholder="验证码 (必填)" name="code" ng-model="user.code">
+						</md-input-container>
+						<md-input-container>
+						<md-button type="button" ng-show="!showCountdown" ng-click="getCode()" class="md-raised" ng-disabled="signupForm.email.$invalid">{{btnText}}</md-button>
+						<timer ng-show="showCountdown" ng-attr-interval="1000">{{countdown}}秒后重试</timer>
+					</md-input-container>
+					</div>
+					<md-input-container>
+						<md-icon>
+							<i class="material-icons">lock</i>
+						</md-icon>
+						<input type="password" ng-required="true" placeholder="密码 (必填)" name="password" ng-model="user.password"></md-input-container>
+
+					<md-button class="md-raised" ng-disabled="signupForm.$invalid">注册</md-button>
+				</fieldset>
+			</form>
+		</md-content>
+	</md-whiteframe>
+</div>

@@ -1,0 +1,12 @@
+<md-whiteframe class="md-whiteframe-z1" layout-fill layout="column">
+	<div layout="row">
+		<md-input-container class="search" md-no-float flex>
+			<input ng-model="permissionOptions.quickFilterText" placeholder="搜索"></md-input-container>
+		<md-button class="md-icon-button" ng-show="permissionOptions.selectedRows.length>
+			0" ng-click="addPermissions()" aria-label="add">
+			<md-icon> <i class="material-icons">add</i>
+			</md-icon>
+		</md-button>
+	</div>
+	<div ag-grid="permissionOptions" class="ag-fresh gird-height"></div>
+</md-whiteframe>

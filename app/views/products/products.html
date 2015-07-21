@@ -1,0 +1,70 @@
+	 <div layout="row" layout-wrap flex>
+	 	<div flex="65" layout="column">
+	 		<md-content layout-padding layout="column" flex>
+	 			<md-whiteframe class="md-whiteframe-z1" layout="column" flex>
+	 				<div layout="row">
+	 					<md-select placeholder="产品类型" ng-model="productStatus">
+	 						<md-option ng-value="1">已发布</md-option>
+	 						<md-option ng-value="2">已导入</md-option>
+	 						<md-option ng-value="3">代理</md-option>
+	 					</md-select>
+	 					<md-input-container flex>
+	 						<label>搜索</label>
+	 						<input ng-model="productOptions.quickFilterText"></md-input-container>
+	 					<md-button class="md-icon-button" ng-click="productOptions.api.deselectAll()" aria-label="plus">
+	 						<md-icon> <i class="material-icons">add</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button ng-disabled="true" class="md-icon-button" aria-label="edit">
+	 						<md-icon> <i class="material-icons">edit</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button ng-disabled="productOptions.selectedRows.length==0" ng-click="delete()" class="md-icon-button" aria-label="delete">
+	 						<md-icon>
+	 							<i class="material-icons">delete</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button class="md-raised md-primary" ng-show="productOptions.selectedRows.length>0">发布</md-button>
+	 				</div>
+	 				<div ag-grid="productOptions" class="ag-fresh grid-height"></div>
+	 			</md-whiteframe>
+	 		</md-content>
+	 	</div>
+	 	<div flex="35">
+	 		<md-content layout-padding>
+	 			<md-whiteframe class="md-whiteframe-z1" layout="column">
+	 				<md-tabs md-selected="selectedIndex" md-center-tabs="false">
+	 					<md-tab>
+	 						<md-tab-label>{{formTitle}}产品</md-tab-label>
+	 						<md-tab-body>
+	 							<md-content layout-padding class="autoScroll">
+	 								<form name="productForm" ng-submit="submit()">
+	 									<fieldset>
+	 										<md-input-container>
+	 											<label>名称</label>
+	 											<input ng-model="product.name" type="text" ng-required="true"></md-input-container>
+	 										<md-input-container>
+	 											<label>价格</label>
+	 											<input ng-model="product.price" type="number"></md-input-container>
+	 										<md-input-container>
+	 											<label>单位</label>
+	 											<input ng-model="product.unit" type="text"></md-input-container>
+	 										<md-input-container layout="row">
+	 											<md-select name="brandId" placeholder="品牌" ng-model="product.brandId" ng-required="true">
+	 												<md-option ng-value="brand.id" ng-repeat="brand in brands">{{brand.name}}</md-option>
+	 											</md-select>
+	 											<md-select ng-disabled="sampleOptions.selectedRows.length==0" name="sampleId" placeholder="样本" ng-model="product.sampleId" ng-required="true">
+	 												<md-option ng-value="sample.id" ng-repeat="sample in samples">{{sample.name}}</md-option>
+	 											</md-select>
+	 										</md-input-container>
+	 										<md-button class="md-raised" ng-disabled="productForm.$invalid">保存</md-button>
+	 									</fieldset>
+	 								</form>
+	 							</md-content>
+	 						</md-tab-body>
+	 					</md-tab>
+	 				</md-tabs>
+	 			</md-whiteframe>
+	 		</md-content>
+	 	</div>
+	 </div>

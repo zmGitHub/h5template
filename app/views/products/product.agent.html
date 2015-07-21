@@ -1,0 +1,30 @@
+<div layout="row" flex>
+	<div flex="30" layout="column">
+		<md-content layout-padding layout="column" flex>
+			<md-whiteframe class="md-whiteframe-z1" layout="column" flex style="position:relative">
+				<md-input-container md-no-float class="search">
+					<input ng-model="organOptions.quickFilterText" placeholder="搜索"></md-input-container>
+				<div style="position:relative"flex>
+					<div ag-grid="organOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+				</div>
+			</md-whiteframe>
+		</md-content>
+	</div>
+	<div flex="70" layout="column">
+		<md-content layout-padding layout="column" flex>
+			<md-whiteframe class="md-whiteframe-z1" layout="column" flex style="position:relative">
+				<div layout="row">
+
+					<md-input-container md-no-float class="search" flex>
+						<input ng-model="productOptions.quickFilterText" placeholder="搜索"></md-input-container>
+					
+					<md-button class="md-raised md-primary" ng-click="dialog($event)" ng-show="productOptions.selectedRows.length>0">代理</md-button>
+					<md-switch ng-model="allSelected" ng-show="productOptions.rowData.length>0" ng-change="onChange(allSelected)" aria-label="全选">全选</md-switch>
+				</div>
+				<div style="position:relative" flex>
+					<div ag-grid="productOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+				</div>
+			</md-whiteframe>
+		</md-content>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+	 <div layout="row" flex>
+	 	<div flex="60" layout="column">
+	 		<md-content layout-padding layout="column" flex>
+	 			<md-whiteframe class="md-whiteframe-z1" layout="column" flex style="position:relative">
+	 				<div layout="row">
+	 					<md-input-container class="search" md-no-float flex>
+	 						<input ng-model="brandOptions.quickFilterText" placeholder="搜索"></md-input-container>
+	 					<md-button class="md-icon-button" ng-click="brandOptions.api.deselectAll()" aria-label="plus">
+	 						<md-icon> <i class="material-icons">add</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button ng-disabled="true" class="md-icon-button" aria-label="edit">
+	 						<md-icon> <i class="material-icons">edit</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button ng-disabled="brandOptions.selectedRows.length==0" ng-click="delete()" class="md-icon-button" aria-label="delete">
+	 						<md-icon>
+	 							<i class="material-icons">delete</i>
+	 						</md-icon>
+	 					</md-button>
+	 				</div>
+	 				<div style="position:relative" flex>
+	 					<div ag-grid="brandOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+	 				</div>
+	 			</md-whiteframe>
+	 		</md-content>
+	 	</div>
+	 	<div flex="40">
+	 		<md-content layout-padding>
+	 			<md-whiteframe class="md-whiteframe-z1" layout="column">
+	 				<md-tabs md-selected="data.selectedIndex" md-center-tabs="false">
+	 					<md-tab>
+	 						<md-tab-label>{{formTitle}}品牌</md-tab-label>
+	 						<md-tab-body>
+	 							<md-content layout-padding class="autoScroll">
+	 								<form name="brandForm" ng-submit="submit()">
+	 									<fieldset ng-disabled="false">
+	 										<md-input-container>
+	 											<label>名称</label>
+	 											<input ng-model="brand.name" type="text" ng-required="true"></md-input-container>
+	 										<md-button class="md-raised" ng-disabled="brandForm.$invalid">保存</md-button>
+	 									</fieldset>
+	 								</form>
+	 							</md-content>
+	 						</md-tab-body>
+	 					</md-tab>
+	 				</md-tabs>
+	 			</md-whiteframe>
+	 		</md-content>
+	 	</div>
+	 </div>

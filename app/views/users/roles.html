@@ -1,0 +1,33 @@
+	 <div layout="row" flex>
+	 	<div flex="50" layout="column">
+	 		<md-content layout-padding layout="column" flex>
+	 			<md-whiteframe class="md-whiteframe-z1" layout="column" flex>
+	 				<div layout="row">
+	 					<md-input-container class="search" md-no-float flex>
+	 						<input ng-model="roleOptions.quickFilterText" placeholder="搜索"></md-input-container>
+	 					<md-button class="md-icon-button" ng-click="add()" aria-label="add" ng-class="{'md-focused': ($state.includes('main.roles.add') && role.id==undefined)}">
+	 						<md-icon> <i class="material-icons">add</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button class="md-icon-button" ng-disabled="roleOptions.selectedRows.length==0" class="md-icon-button" ng-click="edit()" aria-label="edit" ng-class="{'md-focused': ($state.includes('main.roles.edit') && role.id>
+	 						0)}">
+	 						<md-icon> <i class="material-icons">edit</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button class="md-icon-button" ng-disabled="roleOptions.selectedRows.length==0" ng-click="delete()" class="md-icon-button" aria-label="delete">
+	 						<md-icon>
+	 							<i class="material-icons">delete</i>
+	 						</md-icon>
+	 					</md-button>
+	 					<md-button class="md-raised" ng-click="rolePermissions()" ng-disabled="roleOptions.selectedRows.length==0" ng-class="{'md-focused': $state.includes('main.roles.permissions')}">权限</md-button>
+	 					<md-button class="md-raised" ng-click="roleResources()" ng-disabled="roleOptions.selectedRows.length==0" ng-class="{'md-focused': $state.includes('main.roles.resources')}">资源</md-button>
+	 				</div>
+	 				<div style="position:relative" flex>
+	 					<div ag-grid="roleOptions" class="ag-fresh" style="height:100%;width:100%;position:absolute"></div>
+	 				</div>
+	 			</md-whiteframe>
+	 		</md-content>
+	 	</div>
+	 	<md-content flex="50" layout="column" ui-view></md-content>
+
+	 </div>
